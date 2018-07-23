@@ -29,13 +29,13 @@ CATEGORY_CHOICES = (
 )
 
 
-class Question(models.Model):
-	question = models.TextField()
+class Problem(models.Model):
+	problem = models.TextField()
 	starred = models.BooleanField(default=False)
 	category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=NON_CODING)
 
 	def __str__(self):
-		return self.question
+		return self.problem
 
 PSEUDOCODE = "PC"
 CPLUSPLUS = "CP"
