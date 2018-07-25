@@ -1,5 +1,34 @@
 from django.db import models
 
+PSEUDOCODE = "PC"
+CPLUSPLUS = "CP"
+GO = "GO"
+JAVA = "JV"
+JAVASCRIPT = "JS"
+PYTHON = "PY"
+RUBY = "RB"
+RUST = "RS"
+
+LANGUAGE_CHOICES = (
+	(PSEUDOCODE, 'Psuedocode and/or Writing'),
+	(CPLUSPLUS, 'C++'),
+	(GO, 'Go'),
+	(JAVA, 'Java'),
+	(JAVASCRIPT, 'Javascript'),
+	(PYTHON, 'Python'),
+	(RUBY, 'Ruby'),
+	(RUST, 'Rust')
+)
+
+class Answer(models.Model):
+	answer = models.TextField()
+	language = models.CharField(max_length=30, choices = LANGUAGE_CHOICES, default=JAVASCRIPT)
+	correct = models.BooleanField(default=False)
+
+	def __str__(self):
+		return self.answer
+
+
 NON_CODING = "Non_Coding"
 ARRAYS_AND_STRINGS = "Arrays and Strings"
 LINKED_LISTS = "Linked Lists"
@@ -28,7 +57,6 @@ CATEGORY_CHOICES = (
 	(TESTING, 'Testing')
 )
 
-
 class Problem(models.Model):
 	problem = models.TextField()
 	starred = models.BooleanField(default=False)
@@ -36,31 +64,3 @@ class Problem(models.Model):
 
 	def __str__(self):
 		return self.problem
-
-PSEUDOCODE = "PC"
-CPLUSPLUS = "CP"
-GO = "GO"
-JAVA = "JV"
-JAVASCRIPT = "JS"
-PYTHON = "PY"
-RUBY = "RB"
-RUST = "RS"
-
-LANGUAGE_CHOICES = (
-	(PSEUDOCODE, 'Psuedocode and/or Writing'),
-	(CPLUSPLUS, 'C++'),
-	(GO, 'Go'),
-	(JAVA, 'Java'),
-	(JAVASCRIPT, 'Javascript'),
-	(PYTHON, 'Python'),
-	(RUBY, 'Ruby'),
-	(RUST, 'Rust')
-)
-
-class Answer(models.Model):
-	answer = models.TextField()
-	language = models.CharField(max_length=30, choices = LANGUAGE_CHOICES, default=JAVASCRIPT)
-	correct = models.BooleanField(default=False)
-
-	def __str__(self):
-		return self.answer
