@@ -4,7 +4,7 @@ This project, once built, will be a simple interface for answering questions tha
 
 ## Expected Features:
 
-* Randomly selected questions in language of your choice
+* Randomly selected questions
 * The ability to star questions that you want to return to
 * Tracking your work
 
