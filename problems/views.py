@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, Template
 from django.template.loader import get_template
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 from .models import Problem, Answer
 import random
 
@@ -12,6 +12,9 @@ def index(request):
 		class Meta:
 			model = Answer
 			fields = ['answer', 'language']
+			widgets = {
+				'answer': Textarea(attrs={'cols': 80, 'rows': 25}),
+			}
 
 	problems = Problem.objects.all()
 	random_problem = random.choice(problems)

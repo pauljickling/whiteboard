@@ -3,12 +3,14 @@
 	<head>
 		<title>Whiteboard Interview Prep</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'main.css' %}">
 	</head>
 <body>
 	<div class="container">
 		<h1>Whiteboard In Progress</h1>
 
-		<p>{{random_problem}}</p>
+		<p class="problem">{{random_problem}}</p>
 		<div>{{form.answer}}</div>
 		<div>Language used for answer: {{form.language}}</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
