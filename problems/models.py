@@ -12,6 +12,7 @@ RECURSION_AND_DYNAMIC_PROGRAMMING = "Recursion and Dynamic Programming"
 SYSTEM_DESIGN_AND_SCALABILITY = "System Design and Scalability"
 SORTING_AND_SEARCHING = "Sorting and Searching"
 TESTING = "Testing"
+JAVASCRIPT = "Javascript"
 
 CATEGORY_CHOICES = (
 	(NON_CODING, "Non-Coding"),
@@ -25,7 +26,8 @@ CATEGORY_CHOICES = (
 	(RECURSION_AND_DYNAMIC_PROGRAMMING, 'Recursion and Dynamic Programming'),
 	(SYSTEM_DESIGN_AND_SCALABILITY, 'System Design and Scalability'),
 	(SORTING_AND_SEARCHING, 'Sorting and Searching'),
-	(TESTING, 'Testing')
+	(TESTING, 'Testing'),
+	(JAVASCRIPT, 'Javascript')
 )
 
 class Problem(models.Model):
@@ -60,6 +62,8 @@ class Answer(models.Model):
 	answer = models.TextField()
 	language = models.CharField(max_length=30, choices = LANGUAGE_CHOICES, default=JAVASCRIPT)
 	correct = models.BooleanField(default=False)
+	answer_date = models.DateTimeField(null=True)
+	problem = models.ForeignKey(Problem, on_delete=models.CASCADE, null=True)
 
 	def __str__(self):
 		return self.answer
