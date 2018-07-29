@@ -31,7 +31,7 @@ div.language {
 
 div.answers {
 	margin: 5px;
-	display: grid;
+	display: none;
 	grid-gap: 5px;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
