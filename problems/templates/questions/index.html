@@ -11,9 +11,11 @@
 		<h1>Whiteboard In Progress</h1>
 
 		<p class="problem">{{random_problem}}</p>
-		<div>{{form.answer}}</div>
-		<div class="language">Language used for answer: {{form.language}}</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<form method="POST">{% csrf_token %}
+			<div>{{form.answer}}</div>
+			<div class="language">Language used for answer: {{form.language}}</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 	</div>
 </body>
 </html>
