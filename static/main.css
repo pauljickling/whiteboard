@@ -19,12 +19,24 @@ p {
 	margin-bottom: 20px;
 }
 
+textarea {
+	margin-top: 10px;
+	font-family: monospace;
+}
+
 div.language {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-textarea {
-	margin-top: 10px;
-	font-family: monospace;
+div.answers {
+	margin: 5px;
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+div.answer {
+	border: 1px solid gray;
+	padding: 5px;
 }
