@@ -3,5 +3,5 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-path('questions', views.index, name='questions'),
+path('', views.index, name='problems'),
 ]

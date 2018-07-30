@@ -43,6 +43,6 @@ def index(request):
 			instance.answer_date = timezone.now()
 			instance.problem = random_problem
 			instance.save()
-			return render(request, 'questions/index.html', context)
+			return render(request, 'problems/index.html', context)
 	else:
-		return render(request, 'questions/index.html', context)
+		return render(request, 'problems/index.html', context)
