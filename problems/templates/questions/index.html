@@ -8,9 +8,10 @@
 	</head>
 <body>
 	<div class="container">
-		<h1>Whiteboard In Progress</h1>
+		<h1>Whiteboard</h1>
 
-		<p class="problem">{{random_problem}}</p>
+		<p class="problem-type"><strong>{{random_problem.category}}</strong></p>
+		<p class="problem">{{random_problem|safe}}</p>
 		<form method="POST">{% csrf_token %}
 			<div>{{form.answer}}</div>
 			<div class="language">Language used for answer: {{form.language}}</div>

@@ -39,4 +39,5 @@ div.answers {
 div.answer {
 	border: 1px solid gray;
 	padding: 5px;
+	font-family: monospace;
 }
