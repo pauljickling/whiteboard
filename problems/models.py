@@ -39,14 +39,14 @@ class Problem(models.Model):
 	def __str__(self):
 		return self.problem
 
-PSEUDOCODE = "PC"
-CPLUSPLUS = "CP"
-GO = "GO"
-JAVA = "JV"
-JAVASCRIPT = "JS"
-PYTHON = "PY"
-RUBY = "RB"
-RUST = "RS"
+PSEUDOCODE = "Psuedocode and/or Writing"
+CPLUSPLUS = "C++"
+GO = "Go"
+JAVA = "Java"
+JAVASCRIPT = "Javascript"
+PYTHON = "Python"
+RUBY = "Ruby"
+RUST = "Rust"
 
 LANGUAGE_CHOICES = (
 	(PSEUDOCODE, 'Psuedocode and/or Writing'),

@@ -23,7 +23,10 @@
 		<button type="button" class="brn btn-secondary" id="viewAnswers">View Answers</button>
 		<div class="answers">
 			{% for i in current_answers %}
-			<div class="answer">{{i.answer|linebreaksbr}}</div>
+			<div class="answer-grid-item">
+				<div class="answer-language">{{i.language}}</div>
+				<div class="answer">{{i.answer|linebreaksbr}}</div>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
