@@ -18,10 +18,10 @@ def index(request):
 			}
 	
 	problems = Problem.objects.all()
-	#random_problem = random.choice(problems)
+	random_problem = random.choice(problems)
 
 	# Uncomment line below for testing
-	random_problem = problems[0] 
+	#random_problem = problems[0] 
 
 	answers = Answer.objects.all()
 	current_answers = []
