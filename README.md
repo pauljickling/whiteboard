@@ -6,7 +6,6 @@ Whiteboard saves your previous answers that you can view for questions so you ca
 
 ## Post-MVP Features to be Implemented
 
-* Javascript that converts Problem text into HTML
 * Displaying language tags for your answers
 * Marking answers as correct
 * An option for deleting answers
