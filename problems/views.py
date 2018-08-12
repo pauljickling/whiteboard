@@ -9,13 +9,18 @@ import random
 
 def index(request):
 
+	class ProblemForm(ModelForm):
+		class Meta:
+			model = Problem
+			fields = ['category']
+
 	class AnswerForm(ModelForm):
 		class Meta:
 			model = Answer
 			fields = ['answer', 'language']
 			widgets = {
 				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
-			}
+			}	
 	
 	problems = Problem.objects.all()
 	random_problem = random.choice(problems)
@@ -32,7 +37,8 @@ def index(request):
 	context = {
 		'random_problem': random_problem, 
 		'form': AnswerForm,
-		'current_answers': current_answers}
+		'current_answers': current_answers,
+		'problem_category': ProblemForm}
 
 	if request.method == "POST":
 		answer = AnswerForm(request.POST)

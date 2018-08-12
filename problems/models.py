@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+ALL = "All"
 NON_CODING = "Non_Coding"
 ARRAYS_AND_STRINGS = "Arrays and Strings"
 LINKED_LISTS = "Linked Lists"
@@ -16,6 +17,7 @@ TESTING = "Testing"
 JAVASCRIPT = "Javascript"
 
 CATEGORY_CHOICES = (
+	(ALL, "All"),
 	(NON_CODING, "Non-Coding"),
 	(ARRAYS_AND_STRINGS, 'Arrays and Strings'),
 	(LINKED_LISTS, 'Linked Lists'),
