@@ -4,3 +4,5 @@ db.sqlite3
 geckodriver.log
 functional_tests.py
 data.json
+whiteboard/__pycache__
+problems/__pycache__
