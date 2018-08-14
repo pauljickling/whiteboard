@@ -36,7 +36,7 @@ CATEGORY_CHOICES = (
 class Problem(models.Model):
 	problem = models.TextField()
 	starred = models.BooleanField(default=False)
-	category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=NON_CODING)
+	category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=ALL)
 
 	def __str__(self):
 		return self.problem
