@@ -23,6 +23,11 @@ def index(request):
 			}	
 	
 	problems = Problem.objects.all()
+	categories = set(["All",])
+	for i in problems:
+		categories.add(i.category)
+	sorted(categories)
+	print(categories)
 	random_problem = random.choice(problems)
 
 	# Uncomment line below for testing
@@ -38,7 +43,7 @@ def index(request):
 		'random_problem': random_problem, 
 		'form': AnswerForm,
 		'current_answers': current_answers,
-		'problem_category': ProblemForm}
+		'problem_category': categories}
 
 	if request.method == "POST":
 		answer = AnswerForm(request.POST)

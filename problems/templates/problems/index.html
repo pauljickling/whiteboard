@@ -7,10 +7,21 @@
 		<link rel="stylesheet" href="{% static 'main.css' %}">
 	</head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <a class="navbar-brand" href="#">Whiteboard Problems</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				{% for i in problem_category %}
+				<li class="nav-item">
+					<a class="nav-link" href="localhost:8000/{{i.category}}">{{i}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</nav>
 	<div class="container">
-		<h1>Whiteboard</h1>
-
-		{{problem_category}}
 
 		<p class="problem-type"><strong>{{random_problem.category}}</strong></p>
 		<p class="problem">{{random_problem|safe}}</p>
