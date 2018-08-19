@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 ALL = "All"
-NON_CODING = "Non_Coding"
 ARRAYS_AND_STRINGS = "Arrays and Strings"
 LINKED_LISTS = "Linked Lists"
 STACKS_AND_QUEUES = "Stacks and Queues"
@@ -13,12 +12,11 @@ OBJECT_ORIENTED_DESIGN = "Object Oriented Design"
 RECURSION_AND_DYNAMIC_PROGRAMMING = "Recursion and Dynamic Programming"
 SYSTEM_DESIGN_AND_SCALABILITY = "System Design and Scalability"
 SORTING_AND_SEARCHING = "Sorting and Searching"
-TESTING = "Testing"
-JAVASCRIPT = "Javascript"
+TESTING = "Testing and Debugging"
+JAVASCRIPT = "Javascript Problems"
 
 CATEGORY_CHOICES = (
 	(ALL, "All"),
-	(NON_CODING, "Non-Coding"),
 	(ARRAYS_AND_STRINGS, 'Arrays and Strings'),
 	(LINKED_LISTS, 'Linked Lists'),
 	(STACKS_AND_QUEUES, 'Stacks and Queues'),
@@ -29,8 +27,8 @@ CATEGORY_CHOICES = (
 	(RECURSION_AND_DYNAMIC_PROGRAMMING, 'Recursion and Dynamic Programming'),
 	(SYSTEM_DESIGN_AND_SCALABILITY, 'System Design and Scalability'),
 	(SORTING_AND_SEARCHING, 'Sorting and Searching'),
-	(TESTING, 'Testing'),
-	(JAVASCRIPT, 'Javascript')
+	(TESTING, 'Testing and Debugging'),
+	(JAVASCRIPT, 'Javascript Problems')
 )
 
 class Problem(models.Model):

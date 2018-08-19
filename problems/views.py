@@ -9,11 +9,6 @@ import random
 
 def index(request):
 
-	class ProblemForm(ModelForm):
-		class Meta:
-			model = Problem
-			fields = ['category']
-
 	class AnswerForm(ModelForm):
 		class Meta:
 			model = Answer
@@ -23,15 +18,15 @@ def index(request):
 			}	
 	
 	problems = Problem.objects.all()
-	categories = set(["All",])
-	for i in problems:
-		categories.add(i.category)
-	sorted(categories)
-	print(categories)
 	random_problem = random.choice(problems)
 
 	# Uncomment line below for testing
 	#random_problem = problems[0] 
+
+	categories = set(["All",])
+	for i in problems:
+		categories.add(i.category)
+	sorted_categories = sorted(categories)
 
 	answers = Answer.objects.all()
 	current_answers = []
@@ -43,7 +38,7 @@ def index(request):
 		'random_problem': random_problem, 
 		'form': AnswerForm,
 		'current_answers': current_answers,
-		'problem_category': categories}
+		'problem_category': sorted_categories}
 
 	if request.method == "POST":
 		answer = AnswerForm(request.POST)
