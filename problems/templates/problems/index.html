@@ -16,7 +16,7 @@
 			<ul class="navbar-nav mr-auto">
 				{% for i in problem_category %}
 				<li class="nav-item">
-					<a class="nav-link" href="localhost:8000/{{i.category}}">{{i}}</a></li>
+					<a class="nav-link" href="localhost:8000/{{i|slugify}}">{{i}}</a></li>
 				{% endfor %}
 			</ul>
 		</div>
