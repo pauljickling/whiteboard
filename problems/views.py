@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.template import Context, Template
 from django.template.loader import get_template
 from django.forms import ModelForm, Textarea
@@ -17,6 +17,18 @@ def index(request):
 				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
 			}	
 	
+	# Takes url path and converts it back to a Problem.category string
+	def de_urlify(path):
+		str1 = path.lstrip('/')
+		str2 = str1.replace('-', ' ')
+		str3 = str2.title()
+		return str3
+
+	#current_path = request.path
+
+	#current_category = de_urlify(current_path)
+	#print("current category is : ", current_category)
+
 	problems = Problem.objects.all()
 	random_problem = random.choice(problems)
 
