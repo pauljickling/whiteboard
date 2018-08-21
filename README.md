@@ -9,4 +9,3 @@ Whiteboard saves your previous answers that you can view for questions so you ca
 * Marking answers as correct
 * An option for deleting answers
 * Starring questions that can be returned to
-* Selecting a category of problems to work with

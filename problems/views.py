@@ -24,13 +24,28 @@ def index(request):
 		str3 = str2.title()
 		return str3
 
-	#current_path = request.path
+	# Select random problem based on current category
+	def correct_category(problem):
+		random_problem = random.choice(problem)
+		current_path = request.path
+		current_category = de_urlify(current_path)
 
-	#current_category = de_urlify(current_path)
-	#print("current category is : ", current_category)
+		if current_category == '':
+			current_category = 'All'
+
+		if current_category == 'All':
+			return random_problem
+
+		while random_problem.category != current_category:
+			random_problem = random.choice(problem)
+			if random_problem.category == current_category:
+				break
+
+		return random_problem
+
 
 	problems = Problem.objects.all()
-	random_problem = random.choice(problems)
+	random_problem = correct_category(problems)
 
 	# Uncomment line below for testing
 	#random_problem = problems[0] 
