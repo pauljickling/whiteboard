@@ -25,27 +25,27 @@ def index(request):
 		return str3
 
 	# Select random problem based on current category
-	def correct_category(problem):
+	def current_category(problem):
 		random_problem = random.choice(problem)
 		current_path = request.path
-		current_category = de_urlify(current_path)
+		user_selection = de_urlify(current_path)
 
-		if current_category == '':
-			current_category = 'All'
+		if user_selection == '':
+			user_selection = 'All'
 
-		if current_category == 'All':
+		if user_selection == 'All':
 			return random_problem
 
-		while random_problem.category != current_category:
+		while random_problem.category != user_selection:
 			random_problem = random.choice(problem)
-			if random_problem.category == current_category:
+			if random_problem.category == user_selection:
 				break
 
 		return random_problem
 
 
 	problems = Problem.objects.all()
-	random_problem = correct_category(problems)
+	random_problem = current_category(problems)
 
 	# Uncomment line below for testing
 	#random_problem = problems[0] 
