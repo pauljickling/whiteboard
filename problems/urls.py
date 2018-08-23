@@ -16,4 +16,5 @@ path('stacks-and-queues', views.index, name='stacks-and-queues'),
 path('system-design-and-scalability', views.index, name='system-design-and-scalability'),
 path('testing-and-debugging', views.index, name='testing-and-debugging'),
 path('trees-and-graphs', views.index, name='trees-and-graphs'),
+path('answers', views.answers, name='answers'),
 ]

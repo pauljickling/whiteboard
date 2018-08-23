@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<title>Whiteboard Answer Review</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'main.css' %}">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand" href="#">Whiteboard Answers</a>
+		</nav>
+
+		<div class="container">
+			{% for i in answers %}
+			<p><strong>{{i.problem}}</strong></p>
+			<p>From {{i.answer_date}} in {{i.language}}:</p>
+			<hr/>
+			<pre>{{i.answer|linebreaksbr}}</pre>
+			<hr/>
+
+			{% endfor %}
+		</div>
+	</body>
+</html>

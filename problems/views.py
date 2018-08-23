@@ -79,3 +79,13 @@ def index(request):
 			return render(request, 'problems/index.html', context)
 	else:
 		return render(request, 'problems/index.html', context)
+
+def answers(request):
+
+	answers = Answer.objects.all()
+
+	context = {
+		'answers': answers,
+	}
+	
+	return render(request, 'problems/answers.html', context)
