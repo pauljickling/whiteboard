@@ -12,6 +12,8 @@
 			<a class="navbar-brand" href="#">Whiteboard Answers</a>
 		</nav>
 
+		<button type="submit" class="btn btn-primary" id="button-update">Update Correct Answers</button>
+		
 		<div class="container">
 			{% for i in answers %}
 			<p><strong>{{i.problem}}</strong></p>
@@ -22,7 +24,7 @@
 			<form>
 				<div class="form-group form-check">
 					<input type="checkbox" class="form-check-input" id="{{i.answer_date}}">
-					<label class="form-check-label" for="{{i.answer_date}}">Correct</label>
+					<label class="form-check-label" for="{{i.answer_date}}">Mark as Correct</label>
 				</div>
 			</form>
 
