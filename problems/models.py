@@ -50,7 +50,7 @@ RUST = "Rust"
 WRITING = "Writing"
 
 LANGUAGE_CHOICES = (
-	(PSEUDOCODE, 'Psuedocode and/or Writing'),
+	(PSEUDOCODE, 'Psuedocode'),
 	(CPLUSPLUS, 'C++'),
 	(GO, 'Go'),
 	(JAVA, 'Java'),
