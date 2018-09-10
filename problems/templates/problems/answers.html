@@ -16,18 +16,17 @@
 		
 		<div class="container">
 			{% for i in answers %}
+			<form>
 			<p><strong>{{i.problem}}</strong></p>
 			<p>From {{i.answer_date}} in {{i.language}}:</p>
 			<hr/>
 			<pre>{{i.answer|linebreaksbr}}</pre>
 			<hr/>
-			<form>
 				<div class="form-group form-check">
 					<input type="checkbox" class="form-check-input" id="{{i.answer_date}}">
 					<label class="form-check-label" for="{{i.answer_date}}">Mark as Correct</label>
 				</div>
 			</form>
-
 			{% endfor %}
 			<p><a href="{% url 'problems' %}">Back to problems</a></p>
 		</div>
