@@ -26,7 +26,7 @@ def index(request):
 
 	# Select random problem based on current category
 	def current_category(problem):
-		random_problem = random.choice(problem)
+		any_problem = random.choice(problem)
 		current_path = request.path
 		user_selection = de_urlify(current_path)
 
@@ -34,15 +34,22 @@ def index(request):
 			user_selection = 'All'
 
 		if user_selection == 'All':
-			return random_problem
+			return any_problem
+		else:
+			current_category = []
+			for i in problem:
+				if i.category.title() == user_selection:
+					print(True)
+					current_category.append(i)
 
-		while random_problem.category != user_selection:
-			random_problem = random.choice(problem)
-			if random_problem.category == user_selection:
-				break
+			# hopefully this while loop never runs, if it does there's a problem with the database
+			while current_category == []:
+				print("Vexingly empty!")
+				current_category.append(problems[0])
+				
+			problem_from_category = random.choice(current_category)
 
-		return random_problem
-
+			return problem_from_category
 
 	problems = Problem.objects.all()
 	random_problem = current_category(problems)
@@ -81,11 +88,8 @@ def index(request):
 		return render(request, 'problems/index.html', context)
 
 def answers(request):
-
 	answers = Answer.objects.all()
-
 	context = {
 		'answers': answers,
 	}
-	
 	return render(request, 'problems/answers.html', context)
