@@ -4,7 +4,7 @@ import random
 def select_problem(category):
 	current_category = category
 	problems = Problem.objects.all()
-	any_problem = random.choice(problem)
+	any_problem = random.choice(problems)
 
 	if current_category == 'Any':
 		return any_problem

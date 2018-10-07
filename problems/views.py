@@ -5,7 +5,7 @@ from django.template.loader import get_template
 from django.forms import ModelForm, Textarea
 from django.utils import timezone
 from .models import Problem, Answer
-from random_problem import problem_list
+from .random_problem import problem_list
 
 def index(request):
 
