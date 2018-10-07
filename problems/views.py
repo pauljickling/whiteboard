@@ -48,7 +48,7 @@ def index(request):
 
 	# Context for template engine
 	context = {
-		'random_problem': random_problem, 
+		'random_problem': current_problem, 
 		'form': AnswerForm,
 		'current_answers': current_answers,
 		'problem_category': sorted_categories}
