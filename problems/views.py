@@ -5,10 +5,11 @@ from django.template.loader import get_template
 from django.forms import ModelForm, Textarea
 from django.utils import timezone
 from .models import Problem, Answer
-import random
+from random_problem import problem_list
 
 def index(request):
 
+	#creates answer form
 	class AnswerForm(ModelForm):
 		class Meta:
 			model = Answer
@@ -23,57 +24,36 @@ def index(request):
 		str2 = str1.replace('-', ' ')
 		str3 = str2.title()
 		return str3
+	
+	current_path = de_urlify(request.path)
 
-	# Select random problem based on current category
-	def current_category(problem):
-		any_problem = random.choice(problem)
-		current_path = request.path
-		user_selection = de_urlify(current_path)
+	# Selects current problem from problem_list (See random_problem.py)
+	current_problem = problem_list(current_path)
 
-		if user_selection == '':
-			user_selection = 'All'
-
-		if user_selection == 'All':
-			return any_problem
-		else:
-			current_category = []
-			for i in problem:
-				if i.category.title() == user_selection:
-					print(True)
-					current_category.append(i)
-
-			# hopefully this while loop never runs, if it does there's a problem with the database
-			while current_category == []:
-				print("Vexingly empty!")
-				current_category.append(problems[0])
-				
-			problem_from_category = random.choice(current_category)
-
-			return problem_from_category
-
+	# Defines problems for categories
 	problems = Problem.objects.all()
-	random_problem = current_category(problems)
 
-	# Uncomment line below for testing
-	#random_problem = problems[0] 
-
+	# Defines categories for Navbar
 	categories = set(["All",])
-	for i in problems:
-		categories.add(i.category)
+	for problem in problems:
+		categories.add(problem.category)
 	sorted_categories = sorted(categories)
 
+	# Looks up answers for current problem
 	answers = Answer.objects.all()
 	current_answers = []
-	for i in answers:
-		if i.problem == random_problem:
-			current_answers.append(i)
+	for answer in answers:
+		if answer.problem == current_problem:
+			current_answers.append(answer)
 
+	# Context for template engine
 	context = {
 		'random_problem': random_problem, 
 		'form': AnswerForm,
 		'current_answers': current_answers,
 		'problem_category': sorted_categories}
 
+	# Handles POST request
 	if request.method == "POST":
 		answer = AnswerForm(request.POST)
 		
@@ -81,9 +61,10 @@ def index(request):
 			instance = answer.save(commit=False)
 			instance.correct = False
 			instance.answer_date = timezone.now()
-			instance.problem = random_problem
 			instance.save()
 			return render(request, 'problems/index.html', context)
+	
+	# Handles GET request
 	else:
 		return render(request, 'problems/index.html', context)
 
