@@ -6,6 +6,9 @@ def select_problem(category):
 	problems = Problem.objects.all()
 	any_problem = random.choice(problems)
 
+	if current_category == '':
+		current_category = 'Any'
+
 	if current_category == 'Any':
 		return any_problem
 	else:

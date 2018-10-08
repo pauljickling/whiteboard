@@ -5,7 +5,7 @@ from django.template.loader import get_template
 from django.forms import ModelForm, Textarea
 from django.utils import timezone
 from .models import Problem, Answer
-from .random_problem import problem_list
+from .random_problem import problem_list, select_problem
 
 def index(request):
 
@@ -28,7 +28,7 @@ def index(request):
 	current_path = de_urlify(request.path)
 
 	# Selects current problem from problem_list (See random_problem.py)
-	current_problem = problem_list(current_path)
+	current_problem = problem_list[current_path]
 
 	# Defines problems for categories
 	problems = Problem.objects.all()
