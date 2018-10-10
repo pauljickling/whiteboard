@@ -2,22 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.template import Context, Template
 from django.template.loader import get_template
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm, Textarea, Select
 from django.utils import timezone
 from .models import Problem, Answer
 from .random_problem import problem_list, select_problem
 
 def index(request):
 
-	#creates answer form
-	class AnswerForm(ModelForm):
-		class Meta:
-			model = Answer
-			fields = ['answer', 'language']
-			widgets = {
-				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
-			}	
-	
 	# Takes url path and converts it back to a Problem.category string
 	def de_urlify(path):
 		str1 = path.lstrip('/')
@@ -29,9 +20,19 @@ def index(request):
 
 	# Selects current problem from problem_list (See random_problem.py)
 	current_problem = problem_list[current_path]
+	PROBLEM_CHOICE = (current_problem,)
 
 	# Defines problems for categories
 	problems = Problem.objects.all()
+
+	#creates answer form
+	class AnswerForm(ModelForm):
+		class Meta:
+			model = Answer
+			fields = ['answer', 'language', 'problem']
+			widgets = {
+				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
+			}	
 
 	# Defines categories for Navbar
 	categories = set(["All",])
@@ -52,6 +53,8 @@ def index(request):
 		'form': AnswerForm,
 		'current_answers': current_answers,
 		'problem_category': sorted_categories}
+
+	print(context['random_problem'])
 
 	# Handles POST request
 	if request.method == "POST":
