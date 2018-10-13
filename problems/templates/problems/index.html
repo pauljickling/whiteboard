@@ -28,7 +28,6 @@
 		<form method="POST">{% csrf_token %}
 			<div>{{form.answer}}</div>
 			<div class="language">Language used for answer: {{form.language}}</div>
-			<div class="answer-problem">{{form.problem}}</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div><br>
@@ -47,6 +46,5 @@
 		<p><a href="{% url 'answers' %}">View All Answers</a></p>
 	</div>
 	<script src= "{% static './show_answers.js' %}"></script>
-	<script src= "{% static './category_select.js' %}"></script>
 </body>
 </html>
