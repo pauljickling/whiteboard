@@ -24,7 +24,8 @@ def index(request):
 
 	# Defines problems for categories
 	problems = Problem.objects.all()
-
+	arrays = Problem.objects.filter(category='Arrays and Strings')
+	print(len(arrays))
 	#creates answer form
 	class AnswerForm(ModelForm):
 		class Meta:
