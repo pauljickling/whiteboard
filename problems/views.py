@@ -25,6 +25,14 @@ def index(request):
 	# Defines problems for categories
 	problems = Problem.objects.all()
 	arrays = Problem.objects.filter(category='Arrays and Strings')
+	linked_lists = Problem.objects.filter(category='Linked Lists')
+	oop = Problem.objects.filter(category='Object Oriented Design')
+	recursion = Problem.objects.filter(category='Recursion and Dynamic Programming')
+	sorting = Problem.objects.filter(category='Sorting and Searching')
+	stacks = Problem.objects.filter(category='Stacks and Queues')
+	scaling = Problem.objects.filter(category='System Design and Scalability')
+	testing = Problem.objects.filter(category='Testing and Debugging')
+	graphs = Problem.objects.filter(category='Trees and Graphs')
 	print(len(arrays))
 	#creates answer form
 	class AnswerForm(ModelForm):
