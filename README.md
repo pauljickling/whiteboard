@@ -1,10 +1,18 @@
 # Whiteboard
 
+## Status Update for 10/16/2018
+
+An important bug with the original MVP release was discovered where submitted answers had random problems saved as their foreign key instead of the actual instance of the problem solved. Because of this the app is currently being rewritten. Updates and progress have been good, and a functional rerelease is expected within the next week or two.
+
+If you want to see what the app looked like it is recommended you go back to the following commit: cbd3efdcdd33f3faf9f30109683f1eaabb2d33e1
+
+## Old Summary
+
 Whiteboard is a simple interface for answering questions that might be asked in a coding interview during the dreaded whiteboarding section. Whiteboard saves your previous answers so that you can track your progress at answering questions.
 
 At this point in time I don't have an instance of the app available on the internet. This is because the selection of questions I have stored in my database are from *Cracking the Coding Interview*, and using those questions publicly would be a copyright violation. That means as the project currently exists you need to run a copy of the app locally, and then create your own set of questions for the database. The simplest way to do that is to use the Django admin component.
 
-## Installation and Setup
+### Installation and Setup
 
 Clone this repository into a directory.
 
