@@ -7,6 +7,13 @@ from django.utils import timezone
 from .models import Problem, Answer
 from .random_problem import problem_list, select_problem
 
+def instance(request, problem_id):
+	try:
+		p = Problem.objects.get(id=problem_id)
+	except Problem.DoesNotExist:
+		raise Http404('Oh no, that problem does not exist!')
+	return render(request, 'problems/instance.html', {'problem': p})
+
 def index(request):
 
 	# Takes url path and converts it back to a Problem.category string
