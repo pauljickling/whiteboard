@@ -5,7 +5,16 @@ from django.template.loader import get_template
 from django.forms import ModelForm, Textarea, Select
 from django.utils import timezone
 from .models import Problem, Answer
-from .random_problem import problem_list, select_problem
+from .random_problem import select_problem, problem_list
+import random
+
+problems = Problem.objects.all()
+problem_id_list = []
+for problem in problems:
+	problem_id_list.append(problem.id)
+print(problem_id_list)
+random_id = random.choice(problem_id_list)
+print("Random ID: ", random_id)
 
 def instance(request, problem_id):
 	try:
