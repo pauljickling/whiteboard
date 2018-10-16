@@ -21,11 +21,20 @@ for problem in problems:
 	problem_id_list.append(problem.id)
 random_id = random.choice(problem_id_list)
 
+# Defines categories for Navbar
+categories = set(["All",])
+for problem in problems:
+	categories.add(problem.category)
+sorted_categories = sorted(categories)
+print(sorted_categories)
+
 def problem(request, problem_id):
 	try:
 		current_problem = Problem.objects.get(id=problem_id)
 		context = {
 			'problem': current_problem,
+			'form': AnswerForm,
+			'category_nav': sorted_categories,
 		}
 	except Problem.DoesNotExist:
 		raise Http404('Oh no, that problem does not exist!')

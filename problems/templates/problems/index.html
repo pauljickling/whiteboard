@@ -7,44 +7,15 @@
 		<link rel="stylesheet" href="{% static 'main.css' %}">
 	</head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		  <a class="navbar-brand" href="#">Whiteboard Problems</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				{% for i in problem_category %}
-				<li class="nav-item">
-					<a class="nav-link" href="{% url i|slugify %}">{{i}}</a></li>
-				{% endfor %}
-			</ul>
-		</div>
-	</nav>
-	<div class="container">
+	<h1>Whiteboard 2.0</h1>
+	<ol>
+		{% for category in category_nav %}
+		<li>{{category}}</li>
+		{% endfor %}
+	</ol>
+	<p><strong>Problem to solve</strong></p>
+	<p>{{problem}}</p>
+	{{form}}
 
-		<p class="problem-type"><strong>{{random_problem.category}}</strong></p>
-		<p class="problem">{{random_problem|safe}}</p>
-		<form method="POST">{% csrf_token %}
-			<div>{{form.answer}}</div>
-			<div class="language">Language used for answer: {{form.language}}</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-	</div><br>
-	
-	<div class="container">
-		<button type="button" class="brn btn-secondary" id="viewAnswers">View Answers ({{current_answers|length}})</button>
-		<div class="answers">
-			{% for i in current_answers %}
-			<div class="answer-grid-item">
-				<div class="answer-language">{{i.language}}</div>
-				<div class="answer">{{i.answer|linebreaksbr}}</div>
-				
-			</div>
-			{% endfor %}
-		</div>
-		<p><a href="{% url 'answers' %}">View All Answers</a></p>
-	</div>
-	<script src= "{% static './show_answers.js' %}"></script>
 </body>
 </html>
