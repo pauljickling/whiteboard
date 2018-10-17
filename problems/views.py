@@ -2,18 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.template import Context, Template
 from django.template.loader import get_template
-from django.forms import ModelForm, Textarea
 from django.utils import timezone
+from .forms import AnswerForm
 from .models import Problem, Answer
 import random
-
-class AnswerForm(ModelForm):
-	class Meta:
-		model = Answer
-		fields = ['answer', 'language']
-		widgets = {
-				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
-		}
 
 problems = Problem.objects.all()
 problem_id_list = []
