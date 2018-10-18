@@ -31,6 +31,7 @@ class Problem(models.Model):
 	problem = models.TextField()
 	starred = models.BooleanField(default=False)
 	category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=ALL)
+	slug = models.SlugField(null=True)
 
 	def __str__(self):
 		return self.problem
