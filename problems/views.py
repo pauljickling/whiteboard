@@ -7,6 +7,13 @@ from .forms import AnswerForm
 from .models import Problem, Answer
 import random
 
+# Takes url path and converts it back to a Problem.category string
+def de_urlify(path):
+	str1 = path.lstrip('/')
+	str2 = str1.replace('-', ' ')
+	str3 = str2.title()
+	return str3
+
 problems = Problem.objects.all()
 problem_id_list = []
 for problem in problems:
@@ -18,7 +25,6 @@ categories = set(["All",])
 for problem in problems:
 	categories.add(problem.category)
 sorted_categories = sorted(categories)
-print(sorted_categories)
 
 def problem(request, problem_id):
 	try:
@@ -33,12 +39,32 @@ def problem(request, problem_id):
 	return render(request, 'problems/index.html', context)
 
 def index(request):
-	route = 'problem/' + str(random_id)
-	print(route)
-	return redirect(route)
+	url = 'problem/' + str(random_id)
+	return redirect(url)
 
-def category(request, category, problem_id):
-	pass
+def category(request, slug='linked-lists'):
+	category = de_urlify(request.path)
+	print(category)
+	select_problems = Problem.objects.filter(category)
+	category_id_list = []
+	for problem in select_problems:
+		category_id_list.append(problem.id)
+	selected_category_id = random.choice(category_id_list)
+	url = request.path + 'problem/' + str(selected_category_id)
+	return redirect(url)
+
+def category_problem(request, slug, problem_id):
+	print(request.path)
+	try:
+		current_problem = Problem.objects.get(id=problem_id)
+		context = {
+			'problem': current_problem,
+			'form': AnswerForm,
+			'category_nav': sorted_categories,
+		}
+	except Problem.DoesNotExist:
+		raise Http404('Oh no, that problem does not exist!')
+	return render(request, 'problems/index.html', context)
 
 def answers(request):
 	answers = Answer.objects.all()

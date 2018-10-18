@@ -4,9 +4,9 @@ from . import views
 
 urlpatterns = [
 path('', views.index, name='index'),
-#path('all', views.index, name='all'),
+path('<slug:slug>/', views.category, name='category'),
 path('problem/<int:problem_id>', views.problem, name='problem'),
-path('<str:category>/problem/<int:problem_id>', views.category, name='category'),
+path('<slug:slug>/problem/<int:problem_id>', views.category_problem, name='category'),
 # path('arrays-and-strings', views.index, name='arrays-and-strings'),
 # path('bit-manipulation', views.index, name='bit-manipulation'),
 # path('linked-lists', views.index, name='linked-lists'),
