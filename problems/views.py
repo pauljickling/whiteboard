@@ -16,6 +16,7 @@ def de_urlify(path):
 
 # Defines categories for Navbar
 categories = set(["All",])
+problems = Problem.objects.all()
 for problem in problems:
 	categories.add(problem.category)
 sorted_categories = sorted(categories)
