@@ -9,7 +9,7 @@ import random
 
 # Takes url path and converts it back to a Problem.category string
 def de_urlify(path):
-	str1 = path.lstrip('/')
+	str1 = path.strip('/')
 	str2 = str1.replace('-', ' ')
 	str3 = str2.title()
 	return str3
@@ -42,29 +42,15 @@ def index(request):
 	url = 'problem/' + str(random_id)
 	return redirect(url)
 
-def category(request, slug='linked-lists'):
-	category = de_urlify(request.path)
-	print(category)
-	select_problems = Problem.objects.filter(category)
-	category_id_list = []
-	for problem in select_problems:
-		category_id_list.append(problem.id)
-	selected_category_id = random.choice(category_id_list)
-	url = request.path + 'problem/' + str(selected_category_id)
+def arrays_and_strings(request):
+	array_problems = Problem.objects.filter(category='Arrays and Strings')
+	array_ids = []
+	for problem in array_problems:
+		array_ids.append(problem.id)
+	random_array = random.choice(array_ids)
+	url = 'arrays-and-strings/problem/' + str(random_array)
 	return redirect(url)
 
-def category_problem(request, slug, problem_id):
-	print(request.path)
-	try:
-		current_problem = Problem.objects.get(id=problem_id)
-		context = {
-			'problem': current_problem,
-			'form': AnswerForm,
-			'category_nav': sorted_categories,
-		}
-	except Problem.DoesNotExist:
-		raise Http404('Oh no, that problem does not exist!')
-	return render(request, 'problems/index.html', context)
 
 def answers(request):
 	answers = Answer.objects.all()
