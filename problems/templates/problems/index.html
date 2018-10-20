@@ -24,8 +24,8 @@
 
 		<p><strong>{{problem.category}}</strong></p>
 		<p>{{problem|safe}}</p>
-
-		<p>Experimental link</p>
+		<p><a href="{% url 'arrays-and-strings' %}">Experimental link1</a></p>
+		<p><a href="{% url 'linked-lists' %}">Experimental link 2</a></p>
 
 		<form method="POST">
 			{% csrf_token %}
