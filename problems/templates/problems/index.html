@@ -16,7 +16,7 @@
 			<ul class="navbar-nav mr-auto">
 				{% for category in category_nav %}
 				<li class="nav-item">
-					<a class="nav-link" href="#">{{category}}</a>
+					<a class="nav-link" href="{% url category|slugify %}">{{category}}</a>
 				</li>
 				{% endfor %}
 			</ul>
@@ -24,8 +24,6 @@
 
 		<p><strong>{{problem.category}}</strong></p>
 		<p>{{problem|safe}}</p>
-		<p><a href="{% url 'arrays-and-strings' %}">Experimental link1</a></p>
-		<p><a href="{% url 'linked-lists' %}">Experimental link 2</a></p>
 
 		<form method="POST">
 			{% csrf_token %}

@@ -102,7 +102,7 @@ def scaling(request):
 	for problem in scaling_problems:
 		scaling_ids.append(problem.id)
 	random_scaling = random.choice(scaling_ids)
-	url = 'system-desing-and-scalability/problem/' + str(random_scaling)
+	url = 'system-design-and-scalability/problem/' + str(random_scaling)
 	return redirect(url)
 
 def testing(request):
