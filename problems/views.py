@@ -29,9 +29,20 @@ def problem(request, problem_id):
 			'form': AnswerForm,
 			'category_nav': sorted_categories,
 		}
+		if request.method == "POST":
+			answer = AnswerForm(request.POST)
+
+			if answer.is_valid():
+				instance = answer.save(commit=False)
+				instance.correct = False
+				instance.answer_date = timezone.now()
+				instance.problem = current_problem
+				instance.save()
+				return redirect('/')
+		else:
+			return render(request, 'problems/index.html', context)
 	except Problem.DoesNotExist:
 		raise Http404('Oh no, that problem does not exist!')
-	return render(request, 'problems/index.html', context)
 
 def index(request):
 	problems = Problem.objects.all()
@@ -122,7 +133,6 @@ def graphs(request):
 	random_graph = random.choice(graph_ids)
 	url = 'trees-and-graphs/problem/' + str(random_graph)
 	return redirect(url)
-
 
 def answers(request):
 	answers = Answer.objects.all()

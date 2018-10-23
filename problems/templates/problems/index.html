@@ -8,10 +8,9 @@
 	</head>
 <body>
 	
-	<h1>Whiteboard 2.0</h1>
-	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<ul class="navbar-nav mr-auto">
+			<li class="navbar-brand">Whiteboard</li>
 			{% for category in category_nav %}
 			<li class="nav-item">
 				<a class="nav-link" href="{% url category|slugify %}">{{category}}</a>
