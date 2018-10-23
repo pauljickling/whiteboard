@@ -24,17 +24,23 @@ sorted_categories = sorted(categories)
 def problem(request, problem_id):
 	try:
 		current_problem = Problem.objects.get(id=problem_id)
+
+		# Answer list created for View Answers feature
 		answers = Answer.objects.all()
 		answer_list = []
 		for answer in answers:
 			if answer.problem == current_problem:
 				answer_list.append(answer)
+		
+		# Context dict passed to template
 		context = {
 			'problem': current_problem,
 			'form': AnswerForm,
 			'answers': answer_list,
 			'category_nav': sorted_categories,
 		}
+
+		# POST
 		if request.method == "POST":
 			answer = AnswerForm(request.POST)
 
@@ -45,11 +51,14 @@ def problem(request, problem_id):
 				instance.problem = current_problem
 				instance.save()
 				return redirect('/')
+		
+		# GET
 		else:
 			return render(request, 'problems/index.html', context)
 	except Problem.DoesNotExist:
 		raise Http404('Oh no, that problem does not exist!')
 
+# Random Problem ID Selections
 def index(request):
 	problems = Problem.objects.all()
 	problem_id_list = []
@@ -140,6 +149,7 @@ def graphs(request):
 	url = 'trees-and-graphs/problem/' + str(random_graph)
 	return redirect(url)
 
+# Answers Page
 def answers(request):
 	answers = Answer.objects.all()
 	return render(request, 'problems/answers.html', {'answers': answers})
