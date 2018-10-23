@@ -24,9 +24,15 @@ sorted_categories = sorted(categories)
 def problem(request, problem_id):
 	try:
 		current_problem = Problem.objects.get(id=problem_id)
+		answers = Answer.objects.all()
+		answer_list = []
+		for answer in answers:
+			if answer.problem == current_problem:
+				answer_list.append(answer)
 		context = {
 			'problem': current_problem,
 			'form': AnswerForm,
+			'answers': answer_list,
 			'category_nav': sorted_categories,
 		}
 		if request.method == "POST":
