@@ -7,3 +7,4 @@ data.json
 whiteboard/__pycache__
 problems/__pycache__
 problems/migrations/__pycache__/
+.vscode/
