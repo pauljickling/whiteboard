@@ -8,3 +8,8 @@ class AnswerForm(ModelForm):
 		widgets = {
 				'answer': Textarea(attrs={'cols': 80, 'rows': 20}),
 		}
+
+class CorrectForm(ModelForm):
+	class Meta:
+		model = Answer
+		fields = ['correct']
