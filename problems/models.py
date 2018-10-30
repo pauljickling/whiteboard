@@ -36,6 +36,7 @@ class Problem(models.Model):
 		return self.problem
 
 PSEUDOCODE = "Psuedocode"
+C = "C"
 CPLUSPLUS = "C++"
 GO = "Go"
 JAVA = "Java"
@@ -43,10 +44,12 @@ JAVASCRIPT = "Javascript"
 PYTHON = "Python"
 RUBY = "Ruby"
 RUST = "Rust"
+SWIFT = "Swift"
 WRITING = "Writing"
 
 LANGUAGE_CHOICES = (
 	(PSEUDOCODE, 'Psuedocode'),
+	(C, 'C'),
 	(CPLUSPLUS, 'C++'),
 	(GO, 'Go'),
 	(JAVA, 'Java'),
@@ -54,6 +57,7 @@ LANGUAGE_CHOICES = (
 	(PYTHON, 'Python'),
 	(RUBY, 'Ruby'),
 	(RUST, 'Rust'),
+	(SWIFT, 'Swift'),
 	(WRITING, 'Writing')
 )
 
