@@ -44,6 +44,7 @@ JAVASCRIPT = "Javascript"
 PYTHON = "Python"
 RUBY = "Ruby"
 RUST = "Rust"
+SCALA = "Scala"
 SWIFT = "Swift"
 WRITING = "Writing"
 
@@ -57,6 +58,7 @@ LANGUAGE_CHOICES = (
 	(PYTHON, 'Python'),
 	(RUBY, 'Ruby'),
 	(RUST, 'Rust'),
+	(SCALA, 'Scala'),
 	(SWIFT, 'Swift'),
 	(WRITING, 'Writing')
 )
@@ -71,4 +73,3 @@ class Answer(models.Model):
 	def __str__(self):
 		return self.answer
 		self.problem
-
