@@ -41,12 +41,12 @@ div.answer {
 	padding: 5px;
 	font-family: monospace;
 }
-
+/*
 button#viewAnswers {
-	margin-top: 15px;
+	margin-top: 15px
 	padding-top: 5px;
 }
-
+*/
 button#button-update {
 	position: fixed;
 	top: 200;
