@@ -31,7 +31,7 @@ def problem(request, problem_id):
 		for answer in answers:
 			if answer.problem == current_problem:
 				answer_list.append(answer)
-		
+
 		# Context dict passed to template
 		context = {
 			'problem': current_problem,
@@ -51,7 +51,7 @@ def problem(request, problem_id):
 				instance.problem = current_problem
 				instance.save()
 				return redirect('/')
-		
+
 		# GET
 		else:
 			return render(request, 'problems/index.html', context)
