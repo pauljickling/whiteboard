@@ -1,11 +1,15 @@
+import random
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.template import Context, Template
 from django.template.loader import get_template
 from django.utils import timezone
+from django.contrib.auth import authenticate
+
 from .forms import AnswerForm
 from .models import Problem, Answer
-import random
+
 
 # Takes url path and converts it back to a Problem.category string
 def de_urlify(path):
