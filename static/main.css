@@ -24,6 +24,14 @@ textarea {
 	font-family: monospace;
 }
 
+button#button-update {
+	position: fixed;
+	top: 200;
+	left: 200;
+	margin-top: 45%;
+	margin-left: 80%;
+}
+
 div.language {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -41,18 +49,7 @@ div.answer {
 	padding: 5px;
 	font-family: monospace;
 }
-/*
-button#viewAnswers {
-	margin-top: 15px
-	padding-top: 5px;
-}
-*/
-button#button-update {
-	position: fixed;
-	top: 200;
-	left: 200;
-	margin-top: 45%;
-	margin-left: 80%;
 
-
+div.login-container {
+  margin: 10px;
 }
