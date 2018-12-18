@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpRequest
 from django.template import Context, Template
 from django.template.loader import get_template
 from django.utils import timezone
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 from .forms import AnswerForm
 from .models import Problem, Answer
