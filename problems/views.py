@@ -157,3 +157,7 @@ def graphs(request):
 def answers(request):
 	answers = Answer.objects.all()
 	return render(request, 'problems/answers.html', {'answers': answers})
+
+# Test routes
+def login_test(request):
+	return render(request, 'registration/login_test.html')

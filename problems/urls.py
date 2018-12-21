@@ -26,4 +26,5 @@ path('testing-and-debugging/problem/<int:problem_id>', views.problem, name='test
 path('trees-and-graphs', views.graphs, name='trees-and-graphs'),
 path('trees-and-graphs/problem/<int:problem_id>', views.problem, name='trees-and-graphs/problem'),
 path('answers', views.answers, name='answers'),
+path('login_test', views.login_test, name='login_test'),
 ]
