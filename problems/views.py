@@ -49,14 +49,13 @@ def problem(request, problem_id):
         # POST
         if request.method == "POST":
             answer = AnswerForm(request.POST)
-
-        if answer.is_valid():
-            instance = answer.save(commit=False)
-            instance.correct = False
-            instance.answer_date = timezone.now()
-            instance.problem = current_problem
-            instance.save()
-            return redirect('/')
+            if answer.is_valid():
+                instance = answer.save(commit=False)
+                instance.correct = False
+                instance.answer_date = timezone.now()
+                instance.problem = current_problem
+                instance.save()
+                return redirect('/')
 
         # GET
         else:
