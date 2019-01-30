@@ -18,12 +18,14 @@ def de_urlify(path):
     str3 = str2.title()
     return str3
 
+
 # Defines categories for Navbar
-categories = set(["All",])
+categories = set(["All", ])
 problems = Problem.objects.all()
 for problem in problems:
     categories.add(problem.category)
 sorted_categories = sorted(categories)
+
 
 def problem(request, problem_id):
     try:
@@ -32,9 +34,9 @@ def problem(request, problem_id):
         # Answer list created for View Answers feature
         answers = Answer.objects.all()
         answer_list = []
-            for answer in answers:
-                if answer.problem == current_problem:
-                    answer_list.append(answer)
+        for answer in answers:
+            if answer.problem == current_problem:
+                answer_list.append(answer)
 
         # Context dict passed to template
         context = {
@@ -62,6 +64,7 @@ def problem(request, problem_id):
             except Problem.DoesNotExist:
                 raise Http404('Oh no, that problem does not exist!')
 
+
 # Random Problem ID Selections
 def index(request):
     problems = Problem.objects.all()
@@ -72,6 +75,7 @@ def index(request):
         url = 'problem/' + str(random_id)
         return redirect(url)
 
+
 def arrays_and_strings(request):
     array_problems = Problem.objects.filter(category='Arrays and Strings')
     array_ids = []
@@ -80,6 +84,7 @@ def arrays_and_strings(request):
         random_array = random.choice(array_ids)
         url = 'arrays-and-strings/problem/' + str(random_array)
         return redirect(url)
+
 
 def linked_lists(request):
     list_problems = Problem.objects.filter(category='Linked Lists')
@@ -90,6 +95,7 @@ def linked_lists(request):
         url = 'linked-lists/problem/' + str(random_list)
         return redirect(url)
 
+
 def object_oriented_design(request):
     oop_problems = Problem.objects.filter(category='Object Oriented Design')
     oop_ids = []
@@ -99,14 +105,18 @@ def object_oriented_design(request):
         url = 'object-oriented-design/problem/' + str(random_oop)
         return redirect(url)
 
+
 def recursion(request):
-    recursion_problems = Problem.objects.filter(category='Recursion and Dynamic Programming')
+    recursion_problems = Problem.objects.filter(
+            category='Recursion and Dynamic Programming')
     recursion_ids = []
     for problem in recursion_problems:
         recursion_ids.append(problem.id)
         random_recursion = random.choice(recursion_ids)
-        url = 'recursion-and-dynamic-programming/problem/' + str(random_recursion)
+        url_root = 'recursion-and-dynamic-programming/problem/'
+        url = url_root + str(random_recursion)
         return redirect(url)
+
 
 def sorting(request):
     sorting_problems = Problem.objects.filter(category='Sorting and Searching')
@@ -117,6 +127,7 @@ def sorting(request):
         url = 'sorting-and-searching/problem/' + str(random_sorting)
         return redirect(url)
 
+
 def stacks(request):
     stack_problems = Problem.objects.filter(category='Stacks and Queues')
     stack_ids = []
@@ -126,14 +137,17 @@ def stacks(request):
         url = 'stacks-and-queues/problem/' + str(random_stack)
         return redirect(url)
 
+
 def scaling(request):
-    scaling_problems = Problem.objects.filter(category='System Design and Scalability')
+    scaling_problems = Problem.objects.filter(
+            category='System Design and Scalability')
     scaling_ids = []
     for problem in scaling_problems:
         scaling_ids.append(problem.id)
         random_scaling = random.choice(scaling_ids)
         url = 'system-design-and-scalability/problem/' + str(random_scaling)
         return redirect(url)
+
 
 def testing(request):
     testing_problems = Problem.objects.filter(category='Testing and Debugging')
@@ -144,6 +158,7 @@ def testing(request):
         url = 'testing-and-debugging/problem/' + str(random_testing)
         return redirect(url)
 
+
 def graphs(request):
     graph_problems = Problem.objects.filter(category='Trees and Graphs')
     graph_ids = []
@@ -153,10 +168,12 @@ def graphs(request):
         url = 'trees-and-graphs/problem/' + str(random_graph)
         return redirect(url)
 
+
 # Answers Page
 def answers(request):
     answers = Answer.objects.all()
     return render(request, 'problems/answers.html', {'answers': answers})
+
 
 # Test routes
 def login_test(request):
