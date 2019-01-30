@@ -61,8 +61,8 @@ def problem(request, problem_id):
         # GET
         else:
             return render(request, 'problems/index.html', context)
-            except Problem.DoesNotExist:
-                raise Http404('Oh no, that problem does not exist!')
+    except Problem.DoesNotExist:
+        raise Http404('Oh no, that problem does not exist!')
 
 
 # Random Problem ID Selections
