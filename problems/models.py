@@ -27,13 +27,18 @@ CATEGORY_CHOICES = (
     (TESTING, 'Testing and Debugging'),
 )
 
+
 class Problem(models.Model):
     problem = models.TextField()
     starred = models.BooleanField(default=False)
-    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=ALL)
+    category = models.CharField(
+            max_length=100,
+            choices=CATEGORY_CHOICES,
+            default=ALL)
 
     def __str__(self):
         return self.problem
+
 
 PSEUDOCODE = "Psuedocode"
 C = "C"
@@ -63,9 +68,13 @@ LANGUAGE_CHOICES = (
     (WRITING, 'Writing')
 )
 
+
 class Answer(models.Model):
     answer = models.TextField()
-    language = models.CharField(max_length=30, choices = LANGUAGE_CHOICES, default=JAVASCRIPT)
+    language = models.CharField(
+            max_length=30,
+            choices=LANGUAGE_CHOICES,
+            default=JAVASCRIPT)
     correct = models.BooleanField(default=False)
     answer_date = models.DateTimeField(null=True)
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE, null=True)
