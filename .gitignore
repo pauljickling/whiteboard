@@ -4,7 +4,7 @@ db.sqlite3
 geckodriver.log
 functional_tests.py
 data.json
-whiteboard/__pycache__
+whiteboard/__pycache__/
 problems/__pycache__
 problems/migrations/__pycache__/
 .vscode/
